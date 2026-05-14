@@ -1,0 +1,30 @@
+{
+  "name": "caece-so2",
+  "version": "0.0.0",
+  "private": true,
+  "description": "CAECE SO2 monorepo",
+  "license": "ISC",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "yarn@1.22.22",
+  "resolutions": {
+    "zod": "3.25.76"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": "^1.22.0"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:agents": "turbo run dev --filter=@caece-so2/weather-agent --filter=@caece-so2/profile-agent --filter=@caece-so2/movies-research-agent --filter=@caece-so2/scout-agent",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules .turbo"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.3"
+  }
+}
