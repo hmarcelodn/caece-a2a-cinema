@@ -76,7 +76,7 @@ export const fetchWatchProviders = async (
 
 /** LangChain tool: find where to watch a movie by TMDB ID and country. Powered by JustWatch. */
 export const tmdbWatchProvidersTool = tool(
-    async ({ movieId, country }) => {
+    async ({ movieId, country }: { movieId: number; country?: string }) => {
         try {
             const result = await fetchWatchProviders(movieId, country ?? 'AR');
             return JSON.stringify(result);

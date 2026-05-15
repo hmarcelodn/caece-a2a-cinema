@@ -37,7 +37,7 @@ const getReverseGenreMap = async (): Promise<Map<number, string>> => {
 };
 
 export const tmdbSearchMoviesTool = tool(
-    async ({ query, year, limit }) => {
+    async ({ query, year, limit }: { query: string; year?: number; limit?: number }) => {
         try {
             const params = new URLSearchParams({
                 api_key: TMDB_API_KEY,

@@ -17,7 +17,7 @@ type TavilySearchResponse = {
 };
 
 export const tavilySearchTool = tool(
-    async ({ query, maxResults }) => {
+    async ({ query, maxResults }: { query: string; maxResults?: number }) => {
         try {
             const res = await fetch(TAVILY_SEARCH_URL, {
                 method: 'POST',

@@ -96,7 +96,7 @@ export const fetchReadingsFromOpenMeteo = async(
 
 /** API pública Open-Meteo (sin API key). Devuelve JSON string: readings o `{ "error": "..." }`. */
 export const getCurrentWeatherTool = tool(
-    async ({ latitude, longitude }) => {
+    async ({ latitude, longitude }: { latitude: number; longitude: number }) => {
         const result = await fetchReadingsFromOpenMeteo(latitude, longitude);
         if (!result.ok) {
             return JSON.stringify({ error: result.error });

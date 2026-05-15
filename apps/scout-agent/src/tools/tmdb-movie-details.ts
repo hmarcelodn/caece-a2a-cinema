@@ -34,7 +34,7 @@ export const fetchMovieDetails = async (movieId: number): Promise<TmdbMovieDetai
 
 /** LangChain tool: get full TMDB movie details by ID. Returns JSON string. */
 export const tmdbMovieDetailsTool = tool(
-    async ({ movieId }) => {
+    async ({ movieId }: { movieId: number }) => {
         try {
             const detail = await fetchMovieDetails(movieId);
             return JSON.stringify({

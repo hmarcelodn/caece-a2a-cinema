@@ -75,7 +75,7 @@ export const fetchWatchProviders = async (
 };
 
 export const tmdbWatchProvidersTool = tool(
-    async ({ movieId, country }) => {
+    async ({ movieId, country }: { movieId: number; country?: string }) => {
         try {
             const result = await fetchWatchProviders(movieId, country ?? 'AR');
             return JSON.stringify(result);

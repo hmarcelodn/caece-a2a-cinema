@@ -105,7 +105,15 @@ export const tmdbDiscover = async (filters: DiscoverFilters): Promise<Omit<Movie
 };
 
 export const tmdbDiscoverMoviesTool = tool(
-    async ({ genres, minVoteAverage, yearFrom, yearTo, originalLanguage, sortBy, limit }) => {
+    async ({
+        genres,
+        minVoteAverage,
+        yearFrom,
+        yearTo,
+        originalLanguage,
+        sortBy,
+        limit,
+    }: DiscoverFilters) => {
         try {
             const movies = await tmdbDiscover({
                 genres,

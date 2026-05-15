@@ -32,7 +32,7 @@ export const fetchMovieDetails = async (movieId: number): Promise<TmdbMovieDetai
 };
 
 export const tmdbMovieDetailsTool = tool(
-    async ({ movieId }) => {
+    async ({ movieId }: { movieId: number }) => {
         try {
             const detail = await fetchMovieDetails(movieId);
             return JSON.stringify({

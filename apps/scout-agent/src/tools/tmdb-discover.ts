@@ -111,7 +111,15 @@ export const tmdbDiscover = async (filters: DiscoverFilters): Promise<Movie[]> =
 
 /** LangChain tool wrapper around tmdbDiscover. Returns JSON string with Movie[] or { error }. */
 export const tmdbDiscoverMoviesTool = tool(
-    async ({ genres, minVoteAverage, yearFrom, yearTo, originalLanguage, sortBy, limit }) => {
+    async ({
+        genres,
+        minVoteAverage,
+        yearFrom,
+        yearTo,
+        originalLanguage,
+        sortBy,
+        limit,
+    }: DiscoverFilters) => {
         try {
             const movies = await tmdbDiscover({
                 genres,
