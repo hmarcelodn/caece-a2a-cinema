@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "dev:agents": "turbo run dev --filter=@caece-so2/weather-agent --filter=@caece-so2/profile-agent --filter=@caece-so2/movies-research-agent --filter=@caece-so2/scout-agent",
-    "dev:ui": "turbo run dev --filter=@caece-so2/entertainment-ui",
+    "dev:ui": "turbo run dev --filter=lumus-ui",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "test": "turbo run test",

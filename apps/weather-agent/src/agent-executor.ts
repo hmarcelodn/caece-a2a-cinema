@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { Message } from '@a2a-js/sdk';
 import type { AgentExecutor, ExecutionEventBus, RequestContext } from '@a2a-js/sdk/server';
-import { extractTextFromMessage } from '@caece-so2/a2a-message-text';
+import { extractTextFromMessage, logA2aIncomingTask } from '@caece-so2/a2a-message-text';
 import { parseClimateRequest, type AgentResponse } from './schemas';
 import { fetchReadingsFromOpenMeteo } from './tools/get-current-weather';
 
@@ -20,6 +20,7 @@ const jsonReply = (requestContext: RequestContext, payload: AgentResponse): Mess
 export const createWeatherAgentExecutor = (): AgentExecutor => ({
     execute: async (requestContext: RequestContext, eventBus: ExecutionEventBus) => {
         const raw = extractTextFromMessage(requestContext.userMessage).trim();
+        logA2aIncomingTask('weather-agent', raw);
         if (!raw) {
             const resp: AgentResponse = {
                 mode: 'weather',

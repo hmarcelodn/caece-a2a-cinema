@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import type { Message } from '@a2a-js/sdk';
 import type { AgentExecutor, ExecutionEventBus, RequestContext } from '@a2a-js/sdk/server';
-import { extractTextFromMessage } from '@caece-so2/a2a-message-text';
+import { extractTextFromMessage, logA2aIncomingTask } from '@caece-so2/a2a-message-text';
 import { scoutAgent } from './agent';
 import { parseScoutRequest } from './schemas';
 
@@ -17,6 +17,7 @@ const agentTextMessage = (text: string, ctx: Pick<RequestContext, 'taskId' | 'co
 export const createScoutAgentExecutor = (): AgentExecutor => ({
     execute: async (requestContext: RequestContext, eventBus: ExecutionEventBus) => {
         const raw = extractTextFromMessage(requestContext.userMessage);
+        logA2aIncomingTask('scout-agent', raw);
         const parsed = parseScoutRequest(raw);
         if (parsed.ok === false) {
             eventBus.publish(agentTextMessage(parsed.error, requestContext));

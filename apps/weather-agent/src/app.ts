@@ -2,8 +2,11 @@ import type { Server } from 'node:http';
 import { AGENT_CARD_PATH } from '@a2a-js/sdk';
 import type { DefaultRequestHandler } from '@a2a-js/sdk/server';
 import { agentCardHandler, jsonRpcHandler, restHandler, UserBuilder } from '@a2a-js/sdk/server/express';
+import { createA2aRequestLogger } from '@caece-so2/a2a-message-text';
 import express, { type Application } from 'express';
 import { BASE_URL } from './constants';
+
+const AGENT_LOG_NAME = 'weather-agent';
 
 export class WeatherA2aApp {
     public app: Application;
@@ -16,6 +19,7 @@ export class WeatherA2aApp {
     ) {
         this.app = express();
         this.port = port;
+        this.app.use(createA2aRequestLogger(AGENT_LOG_NAME));
         this.initializeA2aRoutes();
     }
 

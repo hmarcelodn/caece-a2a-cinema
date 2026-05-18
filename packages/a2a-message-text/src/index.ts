@@ -11,3 +11,6 @@ const partText = (part: Part): string => {
 export const extractTextFromMessage = (message: Message): string => {
     return message.parts.map(partText).filter(Boolean).join('\n').trim();
 };
+
+export { truncateForLog, logA2aIncomingTask } from './logging';
+export { createA2aRequestLogger } from './express-middleware';
