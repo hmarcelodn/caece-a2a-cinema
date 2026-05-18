@@ -27,6 +27,8 @@ const researchOkResponseSchema = z.object({
     ok: z.literal(true),
     recommendations: z.array(movieSchema),
     summary: z.string(),
+    /** Síntesis de opiniones / críticas / foros encontrados con tavily_search (especialmente modo PELICULA_ELEGIDA_TMDB_ID). */
+    opinions_from_internet: z.string().optional(),
 });
 
 const researchFailResponseSchema = z.object({
